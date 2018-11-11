@@ -6,7 +6,7 @@ import (
 	"time"
 
 	envload "github.com/lestrrat-go/envload"
-	"github.com/lestrrat-go/strftime"
+	"github.com/FrankieFinancial/strftime"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -46,12 +46,12 @@ func TestFormat(t *testing.T) {
 
 	os.Setenv("LC_ALL", "C")
 
-	s, err := strftime.Format(`%A %a %B %b %C %c %D %d %e %F %H %h %I %j %k %l %M %m %n %p %R %r %S %T %t %U %u %V %v %W %w %X %x %Y %y %Z %z`, ref)
+	s, err := strftime.Format(`%A %a %B %b %C %c %D %d %e %F %H %h %I %j %k %l %M %m %n %p %R %r %S %T %t %U %u %V %v %W %w %X %x %Y %y %Z %z %S%3 %S%6 %S%9`, ref)
 	if !assert.NoError(t, err, `strftime.Format succeeds`) {
 		return
 	}
 
-	if !assert.Equal(t, "Monday Mon January Jan 20 Mon Jan  2 22:04:05 2006 01/02/06 02  2 2006-01-02 22 Jan 10 002 22 10 04 01 \n PM 22:04 10:04:05 PM 05 22:04:05 \t 01 1 01  2-Jan-2006 01 1 22:04:05 01/02/06 2006 06 UTC +0000", s, `formatted result matches`) {
+	if !assert.Equal(t, "Monday Mon January Jan 20 Mon Jan  2 22:04:05 2006 01/02/06 02  2 2006-01-02 22 Jan 10 002 22 10 04 01 \n PM 22:04 10:04:05 PM 05 22:04:05 \t 01 1 01  2-Jan-2006 01 1 22:04:05 01/02/06 2006 06 UTC +0000 05.000 05.000000 05.000000000", s, `formatted result matches`) {
 		return
 	}
 }
