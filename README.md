@@ -1,6 +1,7 @@
 # strftime
 
 Fast strftime for Go
+Our modification adds support for millisecond, microsecond and nanosecond formatting.
 
 [![Build Status](https://travis-ci.org/lestrrat-go/strftime.png?branch=master)](https://travis-ci.org/lestrrat-go/strftime)
 
@@ -72,6 +73,9 @@ Formats the time according to the pre-compiled pattern, and returns the result s
 | %R      | equivalent to %H:%M |
 | %r      | equivalent to %I:%M:%S %p |
 | %S      | the second as a decimal number (00-60) |
+|   %3    |  Special case to use with %S%3. Adds ".nnn" milliseconds to the seconds format
+|   %6    |  Special case to use with %S%6. Adds ".nnnnnn" microseconds to the seconds format
+|   %9    |  Special case to use with %S%9. Adds ".nnnnnnnnn" nanoseconds to the seconds format
 | %T      | equivalent to %H:%M:%S |
 | %t      | a tab |
 | %U      | the week number of the year (Sunday as the first day of the week) as a decimal number (00-53) |
